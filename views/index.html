@@ -5,10 +5,40 @@
       <title>Booshalla</title>
       <!-- Link to stylesheet -->
       <link href="./index.css" rel="stylesheet">
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
     </head>
   <body>
+    <script>
+      $(document.ready(function() {
+        $("#subscribe-form").on('submit', function(e) {
+          console.log('here?')
+          e.preventDefault();
+
+          var form = $(this)
+          console.log('form', form)
+          $.ajax({
+            type: "POST",
+            url: '/subscribers',
+            data: form.serialize(),
+            success: function(data) {
+              console.log(data)
+            }
+          })
+        })
+      }))
+
+    </script>
     <div class='main'>
       <h3 class='title'> BOOSHALLA</h3>
+      <p> Subsribe to get the details of our next event straight to your inbox! </p>
+      <br>
+      <form id="subscribe-form">
+        <input type='text' name='name' placeholder="Name"/>
+        <input type='text' name='email' placeholder="Email" />
+        <br>
+        <input type='submit'/>
+      </form>
     </div>
   </body>
 </html>
