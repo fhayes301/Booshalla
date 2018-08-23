@@ -11,19 +11,23 @@
   <body>
     <script>
        $(document).ready(function() {
-         console.log('hi')
+
          $("#subscribe-form").on('submit', function(e) {
            e.preventDefault();
            var form = $(this)
-           console.log(form)
+
            $.ajax({
              type: "POST",
              url: '/subscribers',
              data: form.serialize(),
              success: function(data) {
-               console.log('success')
-             }
+               form.hide()
+               $('.success-form').show()
+               $('.fail-form').hide()
+
+             },
            })
+           $('.fail-form').show()
          })
 
        });
@@ -32,12 +36,16 @@
       <h3 class='title'> BOOSHALLA</h3>
       <p> Subsribe to get the details of our next event straight to your inbox! </p>
       <br>
+      <p class="fail-form"> Something went wrong. :( Try again or email admin@booshalla.com</p>
+
       <form id="subscribe-form">
+        <ul class="errorMessages"></ul>
         <input type='text' name='name' placeholder="Name"/>
-        <input type='text' name='email' placeholder="Email" />
+        <input type='text' name='email' placeholder="Email" required />
         <br>
         <input type='submit'/>
       </form>
+      <p class="success-form"> Thanks for subscribing!</p>
     </div>
   </body>
 </html>
