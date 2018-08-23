@@ -29,3 +29,13 @@ body {
 input {
   text-align: center;
 }
+
+
+.fail-form {
+  display: none;
+  color:red;
+}
+
+.success-form {
+  display:none;
+}
