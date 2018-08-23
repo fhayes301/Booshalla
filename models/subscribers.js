@@ -7,6 +7,8 @@ const subscriberSchema = new Schema({
 	},
 	email: {
 		type: String,
+		required: true,
+		unique: true,
 	}
 })
 
