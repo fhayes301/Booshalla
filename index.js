@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var cors = require('cors');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var subscribersController = require('./controllers/subscribers_controller.js');
+var subscriberscontroller = require('./controllers/subscribers_controller.js');
 require('dotenv').config();
 
 mongoose.connect(`mongodb://${process.env.MLAB_USERNAME}:${process.env.MLAB_PASSWORD}@ds229732.mlab.com:29732/booshalla`)
@@ -40,8 +40,8 @@ app.get('/', function(req,res) {
 	res.sendFile(path.join(__dirname +'/views/index.html'))
 });
 
-app.get('/subscribers', subscribersController.read)
-app.post('/subscribers', subscribersController.create)
+app.get('/subscribers', subscriberscontroller.read)
+app.post('/subscribers', subscriberscontroller.create)
 
 
 app.use((err, req, res, next) => {
